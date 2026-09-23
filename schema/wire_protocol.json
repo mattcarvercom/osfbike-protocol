@@ -1,0 +1,1073 @@
+{
+  "_comment": "SINGLE SOURCE OF TRUTH for the osf.bike native protocol's wire layout (see spec/SCHEMA_GOVERNANCE.md). Do not hand-edit generated output (codec/c/native_telemetry_offsets.h, codec/ts/native-frame-tables.ts) - edit this file and regenerate those instead (tools/).",
+  "protocol_version": 1,
+  "stx": "0x43",
+  "max_payload": 255,
+  "changelog": [
+    {
+      "version": 1,
+      "note": "Initial native protocol wire format."
+    }
+  ],
+  "frame_types": {
+    "ALIVE": 0,
+    "PERIODIC": 1,
+    "COMMAND": 2,
+    "CONFIGURATION": 3,
+    "CAPABILITY": 4,
+    "CONFIG_READ": 5
+  },
+  "signals": [
+    {
+      "id": 0,
+      "name": "PEDAL_TORQUE_RAW",
+      "category": "RAW_SENSED",
+      "width": 2,
+      "storage": "NONE",
+      "writer": "SENSOR_TORQUE"
+    },
+    {
+      "id": 1,
+      "name": "PEDAL_CADENCE_RAW",
+      "category": "RAW_SENSED",
+      "width": 2,
+      "storage": "NONE",
+      "writer": "SENSOR_CADENCE"
+    },
+    {
+      "id": 2,
+      "name": "ASSIST_LEVEL",
+      "category": "COMMAND",
+      "width": 1,
+      "storage": "NONE",
+      "writer": "PROTOCOL"
+    },
+    {
+      "id": 3,
+      "name": "LIGHTS_ON",
+      "category": "COMMAND",
+      "width": 1,
+      "storage": "NONE",
+      "writer": "PROTOCOL"
+    },
+    {
+      "id": 4,
+      "name": "BATTERY_CURRENT_MAX_CFG",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 5,
+      "name": "ASSIST_STRATEGY_CFG",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 6,
+      "name": "PROTOCOL_ADAPTER_OVERRIDE",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 7,
+      "name": "SOC_PERCENT",
+      "category": "DERIVED_TELEMETRY",
+      "width": 1,
+      "storage": "NONE",
+      "writer": "DERIVED_COMPUTE"
+    },
+    {
+      "id": 8,
+      "name": "FAULT_BITMASK",
+      "category": "DERIVED_TELEMETRY",
+      "width": 1,
+      "storage": "NONE",
+      "writer": "DERIVED_COMPUTE"
+    },
+    {
+      "id": 9,
+      "name": "CONTROL_INTERNAL_PROBE",
+      "category": "CONTROL_INTERNAL",
+      "width": 1,
+      "storage": "NONE",
+      "writer": "CONTROL"
+    },
+    {
+      "id": 10,
+      "name": "WHEEL_SPEED_KMH_X10",
+      "category": "DERIVED_TELEMETRY",
+      "width": 2,
+      "storage": "NONE",
+      "writer": "DERIVED_COMPUTE"
+    },
+    {
+      "id": 11,
+      "name": "POWER_W",
+      "category": "DERIVED_TELEMETRY",
+      "width": 2,
+      "storage": "NONE",
+      "writer": "DERIVED_COMPUTE"
+    },
+    {
+      "id": 12,
+      "name": "BATTERY_VOLTAGE_X10",
+      "category": "RAW_SENSED",
+      "width": 2,
+      "storage": "NONE",
+      "writer": "SENSOR_BATTERY"
+    },
+    {
+      "id": 13,
+      "name": "WHEEL_PERIMETER_MM_CFG",
+      "category": "CONFIGURATION",
+      "width": 2,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 14,
+      "name": "MOTOR_OUTPUT_DUTY",
+      "category": "CONTROL_INTERNAL",
+      "width": 1,
+      "storage": "NONE",
+      "writer": "CONTROL"
+    },
+    {
+      "id": 15,
+      "name": "THROTTLE_ENABLED_CFG",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 16,
+      "name": "TEMPERATURE_LIMIT_ENABLED_CFG",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 17,
+      "name": "WHEEL_SPEED_RAW_TICKS",
+      "category": "RAW_SENSED",
+      "width": 2,
+      "storage": "NONE",
+      "writer": "SENSOR_WHEEL_SPEED"
+    },
+    {
+      "id": 18,
+      "name": "PB7_WIRING_FUNC_CFG",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 19,
+      "name": "THROTTLE_RAW",
+      "category": "RAW_SENSED",
+      "width": 1,
+      "storage": "NONE",
+      "writer": "SENSOR_THROTTLE"
+    },
+    {
+      "id": 20,
+      "name": "MOTOR_TEMPERATURE_RAW",
+      "category": "RAW_SENSED",
+      "width": 2,
+      "storage": "NONE",
+      "writer": "SENSOR_THROTTLE"
+    },
+    {
+      "id": 21,
+      "name": "BATTERY_CURRENT_RAW_X10",
+      "category": "RAW_SENSED",
+      "width": 2,
+      "storage": "NONE",
+      "writer": "SENSOR_BATTERY"
+    },
+    {
+      "id": 22,
+      "name": "POWER_ASSIST_LEVEL_1",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 23,
+      "name": "POWER_ASSIST_LEVEL_2",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 24,
+      "name": "POWER_ASSIST_LEVEL_3",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 25,
+      "name": "POWER_ASSIST_LEVEL_4",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 26,
+      "name": "TORQUE_ASSIST_LEVEL_1",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 27,
+      "name": "TORQUE_ASSIST_LEVEL_2",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 28,
+      "name": "TORQUE_ASSIST_LEVEL_3",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 29,
+      "name": "TORQUE_ASSIST_LEVEL_4",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 30,
+      "name": "CADENCE_ASSIST_LEVEL_1",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 31,
+      "name": "CADENCE_ASSIST_LEVEL_2",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 32,
+      "name": "CADENCE_ASSIST_LEVEL_3",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 33,
+      "name": "CADENCE_ASSIST_LEVEL_4",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 34,
+      "name": "EMTB_ASSIST_LEVEL_1",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 35,
+      "name": "EMTB_ASSIST_LEVEL_2",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 36,
+      "name": "EMTB_ASSIST_LEVEL_3",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 37,
+      "name": "EMTB_ASSIST_LEVEL_4",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 38,
+      "name": "ENABLE_WALK_ASSIST",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 39,
+      "name": "WALK_ASSIST_LEVEL_1",
+      "category": "CONFIGURATION",
+      "width": 2,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 40,
+      "name": "WALK_ASSIST_LEVEL_2",
+      "category": "CONFIGURATION",
+      "width": 2,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 41,
+      "name": "WALK_ASSIST_LEVEL_3",
+      "category": "CONFIGURATION",
+      "width": 2,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 42,
+      "name": "WALK_ASSIST_LEVEL_4",
+      "category": "CONFIGURATION",
+      "width": 2,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 43,
+      "name": "WALK_ASSIST_ENGAGE",
+      "category": "COMMAND",
+      "width": 1,
+      "storage": "NONE",
+      "writer": "PROTOCOL"
+    },
+    {
+      "id": 44,
+      "name": "WALK_ASSIST_THRESHOLD_SPEED_X10",
+      "category": "CONFIGURATION",
+      "width": 2,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 45,
+      "name": "CRUISE_MODE_ENABLED",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 46,
+      "name": "CRUISE_TARGET_SPEED_LEVEL_1",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 47,
+      "name": "CRUISE_TARGET_SPEED_LEVEL_2",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 48,
+      "name": "CRUISE_TARGET_SPEED_LEVEL_3",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 49,
+      "name": "CRUISE_TARGET_SPEED_LEVEL_4",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 50,
+      "name": "CRUISE_THRESHOLD_SPEED",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 51,
+      "name": "CRUISE_OVERRIDE_WALK_ECO_ENABLED",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 52,
+      "name": "CRUISE_OVERRIDE_TOUR_ENABLED",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 53,
+      "name": "CRUISE_OVERRIDE_SPORT_ENABLED",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 54,
+      "name": "CRUISE_OVERRIDE_TURBO_ENABLED",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 55,
+      "name": "MOTOR_ACCELERATION",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 56,
+      "name": "MOTOR_DECELERATION",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 57,
+      "name": "MOTOR_BLOCKED_COUNTER_THRESHOLD",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 58,
+      "name": "MOTOR_BLOCKED_BATTERY_CURRENT_THRESHOLD_X10",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 59,
+      "name": "MOTOR_BLOCKED_ERPS_THRESHOLD",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 60,
+      "name": "FIELD_WEAKENING_ENABLED",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 61,
+      "name": "PWM_FREQ",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 62,
+      "name": "OVERCURRENT_DELAY",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 63,
+      "name": "COASTER_BRAKE_ENABLED",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 64,
+      "name": "COASTER_BRAKE_TORQUE_THRESHOLD",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 65,
+      "name": "STARTUP_BOOST_TORQUE_FACTOR",
+      "category": "CONFIGURATION",
+      "width": 2,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 66,
+      "name": "STARTUP_BOOST_CADENCE_STEP",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 67,
+      "name": "STARTUP_BOOST_ON_STARTUP",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 68,
+      "name": "STARTUP_BOOST_AT_ZERO",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 69,
+      "name": "PEDAL_TORQUE_PER_10_BIT_ADC_STEP_X100",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 70,
+      "name": "PEDAL_TORQUE_ADC_MAX_CFG",
+      "category": "CONFIGURATION",
+      "width": 2,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 71,
+      "name": "PEDAL_TORQUE_ADC_OFFSET_CFG",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 72,
+      "name": "PEDAL_TORQUE_ADC_OFFSET_ADJ_CFG",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 73,
+      "name": "PEDAL_TORQUE_ADC_RANGE_ADJ_CFG",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 74,
+      "name": "PEDAL_TORQUE_ADC_ANGLE_ADJ_CFG",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 75,
+      "name": "TARGET_MAX_BATTERY_POWER",
+      "category": "CONFIGURATION",
+      "width": 2,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 76,
+      "name": "BATTERY_CELLS_NUMBER",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 77,
+      "name": "BATTERY_LOW_VOLTAGE_CUT_OFF",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 78,
+      "name": "WHEEL_SPEED_LIMIT_KMH",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 79,
+      "name": "LI_ION_CELL_VOLTS_FULL",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 80,
+      "name": "LI_ION_CELL_VOLTS_75_PERCENT",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 81,
+      "name": "LI_ION_CELL_VOLTS_50_PERCENT",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 82,
+      "name": "LI_ION_CELL_VOLTS_25_PERCENT",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 83,
+      "name": "LI_ION_CELL_VOLTS_EMPTY",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 84,
+      "name": "ENABLE_STREET_MODE_ON_STARTUP",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 85,
+      "name": "STREET_MODE_POWER_LIMIT",
+      "category": "CONFIGURATION",
+      "width": 2,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 86,
+      "name": "STREET_MODE_SPEED_LIMIT",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 87,
+      "name": "STREET_MODE_THROTTLE_MODE",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 88,
+      "name": "ENABLE_BRAKE_SENSOR",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 89,
+      "name": "ENABLE_BATTERY_SAG_INDICATOR",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 90,
+      "name": "BATTERY_VOLTAGE_SAG_FILTER_SHIFT",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 91,
+      "name": "EMTB_BASED_ON_POWER",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 92,
+      "name": "TORQUE_MODES_BASED_ON_POWER",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 93,
+      "name": "POWER_BASED_REFERENCE_VOLTAGE",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 94,
+      "name": "ASSIST_WITHOUT_PEDAL_ROTATION",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 95,
+      "name": "ASSIST_WITHOUT_PEDAL_ROTATION_THRESHOLD",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 96,
+      "name": "ASSIST_LEVEL_5_MODE",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 97,
+      "name": "ASSIST_LEVEL_5_PERCENT",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 98,
+      "name": "THROTTLE_MODE",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 99,
+      "name": "ADC_THROTTLE_MIN_CFG",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 100,
+      "name": "ADC_THROTTLE_MAX_CFG",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 101,
+      "name": "ASSIST_THROTTLE_MIN_CFG",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 102,
+      "name": "ASSIST_THROTTLE_MAX_CFG",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 103,
+      "name": "TEMPERATURE_SENSOR_TYPE",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 104,
+      "name": "MOTOR_TEMPERATURE_MIN_LIMIT",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 105,
+      "name": "MOTOR_TEMPERATURE_MAX_LIMIT",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 106,
+      "name": "TEMPERATURE_ERROR_AT_MIN_LIMIT",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 107,
+      "name": "TORQUE_SENSOR_CALIBRATED",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 108,
+      "name": "TORQUE_SENSOR_ADV_ENABLED",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 109,
+      "name": "TORQUE_SENSOR_ESTIMATED",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 110,
+      "name": "MOTOR_HALL_TICKS_RAW",
+      "category": "RAW_SENSED",
+      "width": 2,
+      "storage": "NONE",
+      "writer": "SENSOR_HALL"
+    },
+    {
+      "id": 111,
+      "name": "MOTOR_SPEED_ERPS",
+      "category": "DERIVED_TELEMETRY",
+      "width": 2,
+      "storage": "NONE",
+      "writer": "DERIVED_COMPUTE"
+    },
+    {
+      "id": 112,
+      "name": "MOTOR_TYPE",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 113,
+      "name": "BATTERY_VOLTAGE_FILTERED_X10",
+      "category": "DERIVED_TELEMETRY",
+      "width": 2,
+      "storage": "NONE",
+      "writer": "DERIVED_COMPUTE"
+    },
+    {
+      "id": 114,
+      "name": "BATTERY_LOW_VOLTAGE_TAPER_RANGE",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 115,
+      "name": "PEDAL_TORQUE_ADC_RAW",
+      "category": "RAW_SENSED",
+      "width": 2,
+      "storage": "NONE",
+      "writer": "SENSOR_TORQUE"
+    },
+    {
+      "id": 116,
+      "name": "SMOOTH_START_PERCENT",
+      "category": "CONFIGURATION",
+      "width": 1,
+      "storage": "EEPROM",
+      "writer": "CONFIG_TXN"
+    },
+    {
+      "id": 117,
+      "name": "HUMAN_POWER_W",
+      "category": "DERIVED_TELEMETRY",
+      "width": 2,
+      "storage": "NONE",
+      "writer": "DERIVED_COMPUTE"
+    }
+  ],
+  "telemetry_fields": [
+    {
+      "signal": "WHEEL_SPEED_KMH_X10",
+      "offset": 0,
+      "width": 2
+    },
+    {
+      "signal": "POWER_W",
+      "offset": 2,
+      "width": 2
+    },
+    {
+      "signal": "SOC_PERCENT",
+      "offset": 4,
+      "width": 1
+    },
+    {
+      "signal": "FAULT_BITMASK",
+      "offset": 5,
+      "width": 1
+    },
+    {
+      "signal": "ASSIST_LEVEL",
+      "offset": 6,
+      "width": 1
+    },
+    {
+      "signal": "LIGHTS_ON",
+      "offset": 7,
+      "width": 1
+    },
+    {
+      "signal": "MOTOR_OUTPUT_DUTY",
+      "offset": 8,
+      "width": 1
+    },
+    {
+      "signal": "PEDAL_CADENCE_RAW",
+      "offset": 9,
+      "width": 2
+    },
+    {
+      "signal": "BATTERY_VOLTAGE_X10",
+      "offset": 11,
+      "width": 2
+    },
+    {
+      "signal": "BATTERY_CURRENT_RAW_X10",
+      "offset": 13,
+      "width": 2
+    },
+    {
+      "signal": "MOTOR_TEMPERATURE_RAW",
+      "offset": 15,
+      "width": 2
+    },
+    {
+      "signal": "WHEEL_SPEED_RAW_TICKS",
+      "offset": 17,
+      "width": 2
+    },
+    {
+      "signal": "THROTTLE_RAW",
+      "offset": 19,
+      "width": 1
+    },
+    {
+      "signal": "PEDAL_TORQUE_RAW",
+      "offset": 20,
+      "width": 2
+    },
+    {
+      "signal": "MOTOR_SPEED_ERPS",
+      "offset": 22,
+      "width": 2
+    },
+    {
+      "signal": "PEDAL_TORQUE_ADC_RAW",
+      "offset": 24,
+      "width": 2
+    },
+    {
+      "signal": "HUMAN_POWER_W",
+      "offset": 26,
+      "width": 2
+    }
+  ],
+  "command_fields": [
+    {
+      "signal": "ASSIST_LEVEL",
+      "offset": 0,
+      "width": 1
+    },
+    {
+      "signal": "LIGHTS_ON",
+      "offset": 1,
+      "width": 1
+    },
+    {
+      "signal": "WALK_ASSIST_ENGAGE",
+      "offset": 2,
+      "width": 1
+    }
+  ],
+  "config_transaction": {
+    "_comment": "Not a fixed field table like telemetry/command - a configuration-write/read frame's payload is [signal id (1 byte), value (the named signal's own width, 1 or 2 bytes, little-endian)], generic over every SIG_CAT_CONFIGURATION row (COMMS_PROTOCOL_SPEC.md \u00a73). The ok/fail reply shapes are documented in native_protocol.h's own doc comments (0x00/0x01 result-discriminator prefix)."
+  }
+}
